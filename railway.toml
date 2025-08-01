@@ -1,0 +1,11 @@
+[build]
+dockerfile = "chromadb/Dockerfile"
+
+[deploy]
+healthcheck_path = "/api/v1/heartbeat"
+healthcheck_timeout = 10
+restart_policy_type = "on_failure"
+restart_policy_max_retries = 3
+
+[networking]
+port = 8000
