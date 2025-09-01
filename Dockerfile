@@ -7,5 +7,5 @@ ENV IS_PERSISTENT=TRUE
 
 EXPOSE 8000
 
-# If Render sets $PORT, use it; otherwise fall back to 8000
-CMD ["sh", "-c", "chroma --port ${PORT:-8000}"]
+# Run chroma directly; use $PORT if provided, otherwise fall back to 8000
+CMD ["chroma", "--port", "${PORT:-8000}"]
