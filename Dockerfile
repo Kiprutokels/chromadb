@@ -1,8 +1,11 @@
 FROM chromadb/chroma:latest
 
-# Render injects $PORT at runtime
-ENV CHROMA_SERVER_HTTP_PORT=${PORT}
+# Default to 8000 (for local dev), but allow override via $PORT (Render)
+ENV CHROMA_SERVER_HTTP_PORT=8000
 ENV CHROMA_SERVER_HOST=0.0.0.0
 ENV IS_PERSISTENT=TRUE
 
 EXPOSE 8000
+
+# If Render sets $PORT, use it; otherwise fall back to 8000
+CMD ["sh", "-c", "chroma --port ${PORT:-8000}"]
