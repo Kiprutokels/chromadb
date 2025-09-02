@@ -2,7 +2,7 @@
 dockerfile = "Dockerfile"
 
 [deploy]
-healthcheck_path = "/"
+healthcheck_path = "/api/v1/heartbeat"
 healthcheck_timeout = 30
 
 [[services]]
